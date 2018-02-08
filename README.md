@@ -1,5 +1,5 @@
-# ncm-cli
-CLI for [NCM 2.0](https://github.com/nodesource/ncm)
+# ncm-ci
+CI tool for [NCM 2.0](https://github.com/nodesource/ncm)
 
 ## About
 
