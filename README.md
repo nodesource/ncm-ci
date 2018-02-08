@@ -1,6 +1,27 @@
 # ncm-ci
 CI tool for [NCM 2.0](https://github.com/nodesource/ncm)
 
+## Usage
+
+```bash
+$ npm install -g nodesource/ncm-ci
+$ ncm-ci --help
+
+  CI tool for NCM 2.0
+
+  Usage
+    $ ncm-ci
+
+  Options
+    --profile   Profile: normal, strict, r&d  Default: normal
+    --port      Http port                     Default: 8080
+    --registry  NPM registry url              Default: https://registry.npmjs.org/
+
+  Examples
+    $ ncm-ci
+
+```
+
 ## About
 
 From the onboarding doc:

@@ -1,0 +1,25 @@
+{
+  "name": "ncm-ci",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": "nodesource/ncm-ci",
+  "description": "CI tool for NCM 2.0",
+  "scripts": {
+    "start": "bin/ncm-ci.js",
+    "test": "prettier-standard '**/*.js' && standard",
+    "watch": "nodemon bin/ncm-ci.js"
+  },
+  "bin": {
+    "ncm-ci": "bin/ncm-ci.js"
+  },
+  "dependencies": {
+    "meow": "^4.0.0",
+    "ncm-proxy": "github:nodesource/ncm-proxy"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12",
+    "prettier-standard": "^8.0.0",
+    "standard": "^10.0.3"
+  }
+}
