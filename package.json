@@ -14,8 +14,8 @@
     "ncm-ci": "bin/ncm-ci.js"
   },
   "dependencies": {
-    "meow": "^4.0.0",
-    "ncm-proxy": "github:nodesource/ncm-proxy"
+    "@nodesource/ncm-proxy": "^5.0.0",
+    "meow": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.14.12",
