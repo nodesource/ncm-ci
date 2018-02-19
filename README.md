@@ -1,10 +1,10 @@
-# ncm-ci
+# @nodesource/ncm-ci
 CI tool for [NCM 2.0](https://github.com/nodesource/ncm)
 
 ## Usage
 
 ```bash
-$ npm install -g nodesource/ncm-ci
+$ npm install -g @nodesource/ncm-ci
 $ ncm-ci --help
 
   CI tool for NCM 2.0

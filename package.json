@@ -1,8 +1,7 @@
 {
-  "name": "ncm-ci",
+  "name": "@nodesource/ncm-ci",
   "version": "0.0.0",
   "license": "UNLICENSED",
-  "private": true,
   "repository": "nodesource/ncm-ci",
   "description": "CI tool for NCM 2.0",
   "scripts": {
