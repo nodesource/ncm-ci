@@ -12,7 +12,6 @@ const cli = meow(
 
   Options
     --profile   Profile: normal, strict  Default: normal
-    --port      Http port                Default: 8080
     --registry  NPM registry url         Default: https://registry.nodesource.io/
 
   Examples
@@ -41,6 +40,6 @@ proxy.check(pkg => {
   return cli.flags.profile === 'strict' ? pkg.score > 85 : true
 })
 
-const server = proxy.listen(cli.flags.port, () => {
+const server = proxy.listen(() => {
   console.log(`http://localhost:${server.address().port}/`)
 })

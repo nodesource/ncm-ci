@@ -14,7 +14,6 @@ $ ncm-ci --help
 
   Options
     --profile   Profile: normal, strict  Default: normal
-    --port      Http port                Default: 8080
     --registry  NPM registry url         Default: https://registry.nodesource.io/
 
   Examples
