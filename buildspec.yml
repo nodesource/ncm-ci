@@ -13,6 +13,7 @@ env:
 phases:
   install:
     commands:
+      - npm config set @nodesource:registry http://packages-internal.nodesource.io
       - npm install
 
   build:
