@@ -12,7 +12,6 @@ const cli = meow(
     $ NCM_TOKEN=token ncm-ci
 
   Options
-    --strict    Enable strict mode
     --registry  NPM registry url      Default: https://registry.npmjs.org
 
   Examples
@@ -50,7 +49,7 @@ proxy.check(pkg => {
       console.log(`    - ${vul.title} (severity=${vul.severity})`)
     }
   }
-  return pkg.score > 85 || !cli.flags.strict
+  return pkg.score > 85
 })
 
 const server = proxy.listen(() => {

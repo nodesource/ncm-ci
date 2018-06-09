@@ -15,7 +15,6 @@ $ ncm-ci --help
     $ NCM_TOKEN=token ncm-ci
 
   Options
-    --strict    Enable strict mode
     --registry  NPM registry url      Default: https://registry.npmjs.org
 
   Examples
