@@ -12,8 +12,8 @@ const cli = meow(
     $ NCM_TOKEN=token ncm-ci
 
   Options
-    --profile   Profile: normal, strict  Default: normal
-    --registry  NPM registry url         Default: https://registry.npmjs.org
+    --strict    Enable strict mode
+    --registry  NPM registry url      Default: https://registry.npmjs.org
 
   Examples
     $ NCM_TOKEN=token ncm-ci
@@ -50,7 +50,7 @@ proxy.check(pkg => {
       console.log(`    - ${vul.title} (severity=${vul.severity})`)
     }
   }
-  return pkg.score > 85 || cli.flags.profile !== 'strict'
+  return pkg.score > 85 || !cli.flags.strict
 })
 
 const server = proxy.listen(() => {
