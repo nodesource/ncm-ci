@@ -1,6 +1,8 @@
 # @nodesource/ncm-ci
 CI tool for [NCM 2.0](https://github.com/nodesource/ncm)
 
+[![Build Status](http://badges.control-tower.nodesource.io/ncm-ci/status.svg)](https://us-west-2.console.aws.amazon.com/codebuild/home?region=us-west-2#/projects/ncm-ci-ci/view)
+
 ## Usage
 
 ```bash
