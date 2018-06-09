@@ -12,14 +12,15 @@ $ ncm-ci --help
   CI tool for NCM 2.0
 
   Usage
-    $ ncm-ci
+    $ NCM_TOKEN=token ncm-ci
 
   Options
     --profile   Profile: normal, strict  Default: normal
-    --registry  NPM registry url         Default: https://registry.nodesource.io/
+    --registry  NPM registry url         Default: https://registry.npmjs.org
 
   Examples
-    $ ncm-ci --profile=strict
+    $ NCM_TOKEN=token ncm-ci
+    http://localhost:14313
 
 ```
 
