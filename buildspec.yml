@@ -13,9 +13,9 @@ env:
 phases:
   install:
     commands:
-      - npm config set @nodesource:registry http://packages-internal.nodesource.io
+      - npm config set @ns-private:registry http://packages-internal.nodesource.io
       - npm install
 
   build:
     commands:
-      - npm run test
+      - npm test
