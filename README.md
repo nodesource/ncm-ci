@@ -12,13 +12,13 @@ $ ncm-ci --help
   CI tool for NCM 2.0
 
   Usage
-    $ NCM_TOKEN=token ncm-ci
+    $ NCM_TOKEN=token NCM_ORG=id ncm-ci
 
   Options
     --registry  NPM registry url      Default: https://registry.npmjs.org
 
   Examples
-    $ NCM_TOKEN=token ncm-ci
+    $ NCM_TOKEN=token NCM_ORG=id ncm-ci
     http://localhost:14313
 
 ```
