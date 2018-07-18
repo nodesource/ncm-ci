@@ -2,7 +2,7 @@
 
 'use strict'
 
-const Proxy = require('@nodesource/ncm-proxy')
+const Proxy = require('@ns-private/ncm-proxy')
 const meow = require('meow')
 const semver = require('semver')
 
@@ -35,7 +35,7 @@ proxy.on('error', err => {
   console.error(err)
 })
 
-proxy.check(pkg => {
+proxy.check(async pkg => {
   console.log(
     `${String(pkg.score || 0).padStart(3)} ${pkg.name}@${pkg.version}`
   )

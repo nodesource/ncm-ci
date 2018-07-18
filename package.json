@@ -13,7 +13,7 @@
     "ncm-ci": "bin/ncm-ci.js"
   },
   "dependencies": {
-    "@nodesource/ncm-proxy": "^12.0.1",
+    "@ns-private/ncm-proxy": "^14.0.0",
     "meow": "^4.0.0",
     "semver": "^5.5.0"
   },
