@@ -30,6 +30,7 @@ const proxy = new Proxy()
 
 proxy.registry(cli.flags.registry || 'https://registry.npmjs.org')
 proxy.auth(process.env.NCM_TOKEN)
+proxy.api('https://staging.api.nodesource.com/ncm2/api/v1')
 
 proxy.on('error', err => {
   console.error(err)
