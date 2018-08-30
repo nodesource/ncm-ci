@@ -1,26 +1,24 @@
 {
-  "name": "@nodesource/ncm-ci",
+  "name": "@ns-private/ncm-ci",
   "version": "5.0.0",
   "license": "UNLICENSED",
   "repository": "nodesource/ncm-ci",
   "description": "CI tool for NCM 2.0",
   "scripts": {
     "start": "bin/ncm-ci.js",
-    "test": "standard && check-deps",
-    "watch": "nodemon bin/ncm-ci.js"
+    "test": "standard && check-deps"
   },
   "bin": {
     "ncm-ci": "bin/ncm-ci.js"
   },
   "dependencies": {
     "@ns-private/graphql": "^3.1.0",
-    "@ns-private/ncm-proxy": "^14.0.0",
-    "meow": "^4.0.0",
-    "semver": "^5.5.0"
+    "@ns-private/ncm-analyze-tree": "^1.0.2",
+    "chalk": "^2.4.1",
+    "meow": "^4.0.0"
   },
   "devDependencies": {
     "@ns-private/check-deps": "^2.0.0",
-    "nodemon": "^1.14.12",
     "standard": "^10.0.3"
   }
 }

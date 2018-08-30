@@ -2,22 +2,17 @@
 
 'use strict'
 
-const Proxy = require('@ns-private/ncm-proxy')
+const analyze = require('@ns-private/ncm-analyze-tree')
 const graphql = require('@ns-private/graphql')
 const meow = require('meow')
-const semver = require('semver')
+const chalk = require('chalk')
 
 const cli = meow(
   `
   Usage
+    $ cd node-project
     $ NCM_TOKEN=token NCM_ORG=id ncm-ci
-
-  Options
-    --registry  NPM registry url      Default: https://registry.npmjs.org
-
-  Examples
-    $ NCM_TOKEN=token NCM_ORG=id ncm-ci
-    http://localhost:14313
+    $ echo $?
 `,
   {}
 )
@@ -31,7 +26,7 @@ const token = process.env.NCM_TOKEN
 const organizationId = process.env.NCM_ORG
 const url = 'https://api.nodesource.com/ncm2/api/v1'
 
-const getWhitelist = (async () => {
+const getWhitelist = async () => {
   const whitelist = new Set()
   const data = await graphql({ token, url }, `
     query($organizationId: String!) {
@@ -51,60 +46,82 @@ const getWhitelist = (async () => {
     }
   }
   return whitelist
-})()
+}
 
-const proxy = new Proxy()
+const main = async () => {
+  const whitelist = await getWhitelist()
+  const data = await analyze({
+    dir: process.cwd(),
+    token
+  })
+  const pkg = require(`${process.cwd()}/package.json`)
 
-proxy.registry(cli.flags.registry || 'https://registry.npmjs.org')
-proxy.auth(token)
-proxy.api(url)
+  const res = {
+    pass: new Set(),
+    whitelisted: new Set(),
+    fail: new Set()
+  }
 
-proxy.on('error', err => {
-  console.error(err)
-})
+  for (const pkg of data) {
+    const bucket = whitelist.has(`${pkg.name}@${pkg.version}`)
+      ? res.whitelisted
+      : pkg.score <= 85
+        ? res.fail
+        : res.pass
+    bucket.add(pkg)
+  }
 
-proxy.check(async pkg => {
-  const id = `${pkg.name}@${pkg.version}`
+  console.log(`${chalk.bold('NCM')}`)
+  console.log(`${chalk.grey.bold(pkg.name)} ${chalk.grey(`v${pkg.version}`)}`)
+  console.log(`Pass: ${chalk(res.pass.size)}, Whitelisted: ${chalk(res.whitelisted.size)}, Fail: ${chalk(res.fail.size)}`)
+  console.log()
 
-  // Whitelisted?
-  const whitelist = await getWhitelist
-  let whitelisted = whitelist.has(id)
+  if (res.fail.size) {
+    for (const pkg of res.fail) {
+      // Score
+      process.stdout.write(String(pkg.score || 0).padStart(5))
+      process.stdout.write(' ')
 
-  // Score: "  80" or "(80)" (whitelisted)
-  let scoreText = String(pkg.score || 0)
-  if (whitelisted) {
-    scoreText = `(${scoreText})`
+      // License
+      if (pkg.results.find(r => r.name === 'license')) {
+        process.stdout.write(chalk.red.bold('L'))
+      } else {
+        process.stdout.write(' ')
+      }
+
+      // Vulnerabilities
+      if (pkg.vulnerabilities.length) {
+        process.stdout.write(chalk.red.bold('V'))
+      } else {
+        process.stdout.write(' ')
+      }
+
+      // Uncertified
+      if (!pkg.results.length && !pkg.vulnerabilities.length) {
+        process.stdout.write(chalk.red.bold('U'))
+      } else {
+        process.stdout.write(' ')
+      }
+      process.stdout.write(' ')
+
+      // Name & Version
+      process.stdout.write(pkg.name)
+      process.stdout.write(chalk.grey(` v${pkg.version} `))
+
+      process.stdout.write('\n')
+    }
+
+    console.log()
+    process.exit(1)
   } else {
-    scoreText = `  ${scoreText}`
+    console.log(chalk.green('  All good!'))
+    console.log()
+
+    process.exit(0)
   }
-  scoreText = scoreText.padStart(5)
+}
 
-  // Whitelist: "" or "(whitelisted)" (whitelisted)
-  const whitelistText = whitelisted
-    ? '(whitelisted)'
-    : ''
-
-  // Header
-  console.log(`${scoreText} ${id} ${whitelistText}`)
-
-  // Certification results
-  for (const result of pkg.results) {
-    if (!result.pass) {
-      console.log(`      - ${result.name} ("${result.test}"="${result.value}")`)
-    }
-  }
-
-  // Vulnerabilities
-  for (const vul of pkg.vulnerabilities) {
-    if (semver.satisfies(pkg.version, vul.semver.vulnerable[0])) {
-      console.log(`      - ${vul.title} (severity=${vul.severity})`)
-    }
-  }
-
-  // Allow installation?
-  return whitelisted || pkg.score > 85
-})
-
-const server = proxy.listen(() => {
-  console.log(`http://localhost:${server.address().port}/`)
+main().catch(err => {
+  console.error(err)
+  process.exit(1)
 })
