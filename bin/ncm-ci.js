@@ -24,7 +24,7 @@ if (!process.env.NCM_TOKEN || !process.env.NCM_ORG) {
 
 const token = process.env.NCM_TOKEN
 const organizationId = process.env.NCM_ORG
-const url = 'https://api.nodesource.com/ncm2/api/v1'
+const url = process.env.NCMAPI_URL || 'https://api.nodesource.com/ncm2/api/v1'
 
 const getWhitelist = async () => {
   const whitelist = new Set()
