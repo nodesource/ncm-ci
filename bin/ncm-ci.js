@@ -6,29 +6,32 @@ const analyze = require('@ns-private/ncm-analyze-tree')
 const graphql = require('@ns-private/graphql')
 const meow = require('meow')
 const chalk = require('chalk')
+const fetch = require('node-fetch')
 
 const cli = meow(
   `
   Usage
     $ cd node-project
-    $ NCM_TOKEN=token NCM_ORG=id ncm-ci
+    $ NCM_TOKEN=token ncm-ci
     $ echo $?
 `,
   {}
 )
 
-if (!process.env.NCM_TOKEN || !process.env.NCM_ORG) {
+if (!process.env.NCM_TOKEN) {
   console.error(cli.help)
   process.exit(1)
 }
 
 const token = process.env.NCM_TOKEN
-const organizationId = process.env.NCM_ORG
-const url = process.env.NCMAPI_URL || 'https://api.nodesource.com/ncm2/api/v1'
+const api = {
+  ncm: process.env.NCMAPI_URL || 'https://api.nodesource.com/ncm2/api/v1',
+  accounts: process.env.ACCOUNTSAPI_URL || 'https://api.nodesource.com/accounts'
+}
 
-const getWhitelist = async () => {
+const getWhitelist = async ({ organizationId }) => {
   const whitelist = new Set()
-  const data = await graphql({ token, url }, `
+  const data = await graphql({ token, url: api.ncm }, `
     query($organizationId: String!) {
       policies(organizationId: $organizationId) {
         whitelist {
@@ -48,8 +51,20 @@ const getWhitelist = async () => {
   return whitelist
 }
 
+const getOrganizationId = async () => {
+  const res = await fetch(`${api.accounts}/user/details`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  const details = await res.json()
+  return details.orgId
+}
+
 const main = async () => {
-  const whitelist = await getWhitelist()
+  const organizationId = await getOrganizationId()
+
+  const whitelist = await getWhitelist({ organizationId })
   const data = await analyze({
     dir: process.cwd(),
     token

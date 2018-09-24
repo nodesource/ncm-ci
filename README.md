@@ -7,7 +7,7 @@ CI tool for [NCM 2.0](https://github.com/nodesource/ncm)
 
 ```bash
 $ cd some-project
-$ ncm-ci
+$ NCM_TOKEN=token ncm-ci
 NCM
 some-project v5.0.0
 Pass: 411, Whitelisted: 0, Fail: 10
@@ -33,7 +33,7 @@ $ ncm-ci --help
 
   Usage
     $ cd node-project
-    $ NCM_TOKEN=token NCM_ORG=id ncm-ci
+    $ NCM_TOKEN=token ncm-ci
     $ echo $?
 
 ```

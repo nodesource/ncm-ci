@@ -15,7 +15,8 @@
     "@ns-private/graphql": "^3.1.0",
     "@ns-private/ncm-analyze-tree": "^1.0.2",
     "chalk": "^2.4.1",
-    "meow": "^4.0.0"
+    "meow": "^4.0.0",
+    "node-fetch": "^2.2.0"
   },
   "devDependencies": {
     "@ns-private/check-deps": "^2.0.0",
