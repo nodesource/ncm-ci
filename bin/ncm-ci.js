@@ -78,12 +78,14 @@ const main = async () => {
   }
 
   for (const pkg of data) {
-    const bucket = whitelist.has(`${pkg.name}@${pkg.version}`)
-      ? res.whitelisted
-      : pkg.score <= 85
-        ? res.fail
-        : res.pass
-    bucket.add(pkg)
+    if (pkg.published) {
+      const bucket = whitelist.has(`${pkg.name}@${pkg.version}`)
+        ? res.whitelisted
+        : pkg.score <= 85
+          ? res.fail
+          : res.pass
+      bucket.add(pkg)
+    }
   }
 
   console.log(`${chalk.bold('NCM')}`)
