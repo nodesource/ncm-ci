@@ -51,19 +51,28 @@ const getWhitelist = async ({ organizationId }) => {
   return whitelist
 }
 
-const getOrganizationId = async () => {
+const getUserDetails = async () => {
   const res = await fetch(`${api.accounts}/user/details`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
   })
   const details = await res.json()
-  return details.orgId
+  if (
+    !details.permissions ||
+    !details.permissions.includes('ncm:policy:read') ||
+    !details.permissions.includes('ncm:cert:read')
+  ) {
+    console.error('Insufficient permissions. Your token needs at least:')
+    console.log('- ncm:policy:read')
+    console.log('- ncm:cert:read')
+    process.exit(1)
+  }
+  return details
 }
 
 const main = async () => {
-  const organizationId = await getOrganizationId()
-
+  const { orgId: organizationId } = await getUserDetails()
   const whitelist = await getWhitelist({ organizationId })
   const data = await analyze({
     dir: process.cwd(),
