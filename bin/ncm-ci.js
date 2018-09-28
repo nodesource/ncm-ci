@@ -98,7 +98,8 @@ const main = async () => {
   console.log()
 
   if (res.fail.size) {
-    for (const pkg of res.fail) {
+    const pkgs = [...res.fail].sort((a, b) => a.name.localeCompare(b.name))
+    for (const pkg of pkgs) {
       // Score
       process.stdout.write(String(pkg.score || 0).padStart(5))
       process.stdout.write(' ')
