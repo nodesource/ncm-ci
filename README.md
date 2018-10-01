@@ -36,7 +36,7 @@ Pass: 322, Whitelisted: 0, Fail: 17
 
 ```
 
-![screenshot](screenshot.png)
+<img src='screenshot.png' width='598' />
 
 ## Installation
 
