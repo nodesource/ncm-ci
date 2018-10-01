@@ -4,22 +4,16 @@
 
 const analyze = require('@ns-private/ncm-analyze-tree')
 const graphql = require('@ns-private/graphql')
-const meow = require('meow')
 const chalk = require('chalk')
 const fetch = require('node-fetch')
 
-const cli = meow(
-  `
-  Usage
-    $ cd node-project
-    $ NCM_TOKEN=token ncm-ci
-    $ echo $?
-`,
-  {}
-)
-
 if (!process.env.NCM_TOKEN) {
-  console.error(cli.help)
+  console.error(`
+    Usage
+      $ cd node-project
+      $ NCM_TOKEN=token ncm-ci
+      $ echo $?
+  `)
   process.exit(1)
 }
 
