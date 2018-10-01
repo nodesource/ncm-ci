@@ -38,6 +38,15 @@ Pass: 322, Whitelisted: 0, Fail: 17
 
 <img src='screenshot.png' width='598' />
 
+The tool will exit with a non-0 exit code if one or more dependencies failed
+the certification check.
+
+```bash
+$ ncm-ci
+$ echo $?
+1
+```
+
 ## Installation
 
 ```bash
