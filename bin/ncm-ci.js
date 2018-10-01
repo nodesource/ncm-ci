@@ -97,7 +97,7 @@ const main = async () => {
   console.log()
   console.log(`      ${chalk.red.bold('L')}${chalk.grey('icense')}`)
   console.log(`       ${chalk.red.bold('V')}${chalk.grey('ulnerability')}`)
-  console.log(`        ${chalk.red.bold('U')}${chalk.grey('nlicensed')}`)
+  console.log(`        ${chalk.red.bold('U')}${chalk.grey('ncertified')}`)
   console.log()
 
   if (res.fail.size) {

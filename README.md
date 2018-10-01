@@ -14,7 +14,7 @@ Pass: 322, Whitelisted: 0, Fail: 17
 
       License
        Vulnerability
-        Unlicensed
+        Uncertified
 
     0   U @mrmlnc/readdir-enhanced v2.2.1
     0   U acorn v5.4.1
