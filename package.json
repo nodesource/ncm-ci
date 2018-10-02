@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@ns-private/graphql": "^3.1.0",
-    "@ns-private/ncm-analyze-tree": "^1.5.1",
+    "@ns-private/ncm-analyze-tree": "^2.2.1",
     "chalk": "^2.4.1",
     "node-fetch": "^2.2.0"
   },
