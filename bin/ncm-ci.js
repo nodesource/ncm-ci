@@ -147,6 +147,6 @@ const main = async () => {
 }
 
 main().catch(err => {
-  console.error(err)
+  console.error(err.message || err)
   process.exit(1)
 })
