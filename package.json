@@ -1,6 +1,6 @@
 {
   "name": "@ns-private/ncm-ci",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "license": "UNLICENSED",
   "repository": "nodesource/ncm-ci",
   "description": "CI tool for NCM 2.0",
