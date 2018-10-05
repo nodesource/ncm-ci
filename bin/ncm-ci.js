@@ -95,12 +95,13 @@ const main = async () => {
   console.log(`${chalk.grey.bold(pkg.name)} ${chalk.grey(`v${pkg.version}`)}`)
   console.log(`Pass: ${chalk(res.pass.size)}, Whitelisted: ${chalk(res.whitelisted.size)}, Fail: ${chalk(res.fail.size)}`)
   console.log()
-  console.log(`      ${chalk.red.bold('L')}${chalk.grey('icense')}`)
-  console.log(`       ${chalk.red.bold('V')}${chalk.grey('ulnerability')}`)
-  console.log(`        ${chalk.red.bold('U')}${chalk.grey('ncertified')}`)
-  console.log()
 
   if (res.fail.size) {
+    console.log(`      ${chalk.red.bold('L')}${chalk.grey('icense')}`)
+    console.log(`       ${chalk.red.bold('V')}${chalk.grey('ulnerability')}`)
+    console.log(`        ${chalk.red.bold('U')}${chalk.grey('ncertified')}`)
+    console.log()
+
     const pkgs = [...res.fail].sort((a, b) => a.name.localeCompare(b.name))
     for (const pkg of pkgs) {
       // Score
