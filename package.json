@@ -1,0 +1,30 @@
+{
+  "name": "@nodesource/ncm-ci",
+  "version": "8.0.3",
+  "license": "UNLICENSED",
+  "repository": "nodesource/ncm-ci",
+  "description": "CI tool for NCM 2.0",
+  "author": "NodeSource <npm@nodesource.com> (https://nodesource.com)",
+  "preferGlobal": true,
+  "contributors": [
+    "Julian Gruber <julian.gruber@nodesource.com> (https://github.com/juliangruber)"
+  ],
+  "scripts": {
+    "start": "bin/ncm-ci.js",
+    "test": "standard && npm run test:deps",
+    "test:deps": "dependency-check . --quiet && dependency-check . --quiet --unused --no-dev"
+  },
+  "bin": {
+    "ncm-ci": "bin/ncm-ci.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "graphql-request": "^1.8.2",
+    "ncm-analyze-tree": "^3.0.0",
+    "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "dependency-check": "^3.2.1",
+    "standard": "^10.0.3"
+  }
+}
