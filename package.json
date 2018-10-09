@@ -1,7 +1,7 @@
 {
   "name": "@nodesource/ncm-ci",
   "version": "8.0.3",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": "nodesource/ncm-ci",
   "description": "CI tool for NCM 2.0",
   "author": "NodeSource <npm@nodesource.com> (https://nodesource.com)",
