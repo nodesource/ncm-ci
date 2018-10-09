@@ -1,6 +1,8 @@
 # @nodesource/ncm-ci
 [NCM](https://nodesource.com/products/certified-modules) for CICD systems.
 
+[Read the docs](https://docs.nodesource.com/ncm_v2/docs#ci-overview).
+
 ## Usage
 
 ```bash
