@@ -26,7 +26,7 @@ Pass: 319, Whitelisted: 0, Fail: 5
 
 ```
 
-<img src='screenshot.jpg' width='451' />
+<img src='screenshot.jpg' />
 
 The tool will exit with a non-0 exit code if one or more dependencies failed
 the certification check.
