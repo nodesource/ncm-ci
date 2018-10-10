@@ -1,6 +1,6 @@
 {
   "name": "@nodesource/ncm-ci",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "license": "MIT",
   "repository": "nodesource/ncm-ci",
   "description": "CI tool for NCM 2.0",
