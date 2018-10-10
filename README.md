@@ -25,7 +25,7 @@ Pass: 266, Whitelisted: 0, Fail: 4
    85  V  eslint v2.13.1
     0 L   jsonify v0.0.0
    78  V  shelljs v0.6.1
-   
+
 ```
 
 <img src='screenshot.jpg' />
@@ -41,8 +41,16 @@ $ echo $?
 
 ## Installation
 
+Either install as a global:
+
 ```bash
 $ npm install -g @nodesource/ncm-ci
+```
+
+Or use npx to install and invocate the tool in one line:
+
+```bash
+$ npx @nodesource/ncm-ci
 ```
 
 ## License & copyright
