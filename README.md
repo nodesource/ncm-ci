@@ -1,7 +1,9 @@
 # @nodesource/ncm-ci
 [NCM](https://nodesource.com/products/certified-modules) for CICD systems.
 
-[Read the docs](https://docs.nodesource.com/ncm_v2/docs#ci-overview).
+- [Read the docs](https://docs.nodesource.com/ncm_v2/docs#ci-overview)
+- [Check out an example repository set up with ncm-ci](https://github.com/nodesource/ncm-ci-example)
+- [__Sign up for a professional tier account to get started!__](https://accounts.nodesource.com/)
 
 ## Usage
 
