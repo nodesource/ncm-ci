@@ -1,4 +1,7 @@
 # @nodesource/ncm-ci
+
+[![Build Status](https://travis-ci.org/nodesource/ncm-ci.svg?branch=master)](https://travis-ci.org/nodesource/ncm-ci)
+
 [NCM](https://nodesource.com/products/certified-modules) for CICD systems.
 
 - [Read the docs](https://docs.nodesource.com/ncm_v2/docs#ci-overview)
