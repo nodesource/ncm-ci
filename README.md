@@ -8,23 +8,21 @@
 ## Usage
 
 ```bash
-$ cd some-project
+$ cd express
 $ NCM_TOKEN=token ncm-ci
 NCM
-@nodesource/ncm-ci v8.0.3
-Pass: 319, Whitelisted: 0, Fail: 5
+express v4.16.3
+Pass: 266, Whitelisted: 0, Fail: 4
 
       License
        Vulnerability
         Uncertified
 
-   85  V  eslint v3.19.0
-   85  V  is-my-json-valid v2.17.1
+   85  V  debug v1.0.5
+   85  V  eslint v2.13.1
     0 L   jsonify v0.0.0
-   85  V  shelljs v0.7.8
-    0 L   spdx-license-ids v1.2.2
+   78  V  shelljs v0.6.1
 
-```
 
 <img src='screenshot.jpg' />
 
