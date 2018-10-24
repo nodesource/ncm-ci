@@ -7,6 +7,10 @@ const graphql = require('../lib/graphql')
 const chalk = require('chalk')
 const fetch = require('node-fetch')
 
+// Setting up a timeout to be used with fetch() – will use the NCM_TIMEOUT environment
+// variable or default to 2 minutes (120 seconds / 120000 milliseconds)
+let NCM_TIMEOUT = process.env.NCM_TIMEOUT ? process.env.NCM_TIMEOUT : 120000;
+
 if (!process.env.NCM_TOKEN) {
   console.error(`
     Usage
@@ -49,7 +53,8 @@ const getUserDetails = async () => {
   const res = await fetch(`${api.accounts}/user/details`, {
     headers: {
       Authorization: `Bearer ${token}`
-    }
+    },
+    timeout: NCM_TIMEOUT
   })
   const details = await res.json()
   if (
