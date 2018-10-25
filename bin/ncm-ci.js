@@ -56,7 +56,7 @@ const getUserDetails = async () => {
     headers: {
       Authorization: `Bearer ${token}`
     },
-    timeout: NCM_TIMEOUT
+    timeout
   })
   const details = await res.json()
   if (
